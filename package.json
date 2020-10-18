@@ -51,10 +51,18 @@
         "xo": "^0.33.1"
     },
     "dependencies": {
+        "connected-react-router": "^6.8.0",
         "core-js": "^3.6.5",
+        "history": "^5.0.0",
         "modern-normalize": "^1.0.0",
+        "ramda": "^0.27.1",
         "react": "16.13.1",
         "react-dom": "16.13.1",
+        "react-redux": "^7.2.1",
+        "react-router": "^5.2.0",
+        "redux": "^4.0.5",
+        "redux-devtools-extension": "^2.13.8",
+        "redux-thunk": "^2.3.0",
         "styled-components": "^5.2.0"
     },
     "xo": {
