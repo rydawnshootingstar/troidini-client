@@ -1,6 +1,6 @@
 # Styled React Boilerplate ⚛️ 💅
 
-> Minimal & Modern Boilerplate for building apps with React & styled-components
+> Minimal & Modern Boilerplate for building apps with React & styled-components lol
 
 [![Build Status](https://travis-ci.org/xxczaki/styled-react-boilerplate.svg?branch=master)](https://travis-ci.org/xxczaki/styled-react-boilerplate)
 [![XO code style](https://img.shields.io/badge/code_style-XO-5ed9c7.svg)](https://github.com/xojs/xo)
@@ -15,21 +15,22 @@
 
 ## Highlights
 
-- Less complex than [create-react-app](https://github.com/facebook/create-react-app)
-- Features styled-components
-- Uses React Hooks
-- Includes optimized Webpack & Babel configuration
-- Perfect Lighthouse score
-- Non-blocking CSS & fonts loading
-- Friendly errors & warnings
-- Ensures clean code with xo & stylelint
-- Normalizes default browser style with modern-normalize
-- HTML template with social media meta tags
-- Targets the latest browsers
-- Works offline
-- Preconfigured React Refresh using [react-refresh-webpack-plugin](https://github.com/pmmmwh/react-refresh-webpack-plugin)
+-   Less complex than [create-react-app](https://github.com/facebook/create-react-app)
+-   Features styled-components
+-   Uses React Hooks
+-   Includes optimized Webpack & Babel configuration
+-   Perfect Lighthouse score
+-   Non-blocking CSS & fonts loading
+-   Friendly errors & warnings
+-   Ensures clean code with xo & stylelint
+-   Normalizes default browser style with modern-normalize
+-   HTML template with social media meta tags
+-   Targets the latest browsers
+-   Works offline
+-   Preconfigured React Refresh using [react-refresh-webpack-plugin](https://github.com/pmmmwh/react-refresh-webpack-plugin)
 
 ## File Tree
+
 ```bash
 ├── public                # Folder for static assets
 │   ├── favicon.png       # Favicon
@@ -48,6 +49,7 @@
 ```
 
 ## Usage
+
 ```bash
 # Install dependencies
 
@@ -84,22 +86,20 @@ Place them in the `public` directory in the root of the project. You can then us
 import imgSrc from '../../public/favicon.png';
 
 // Then you can reference it like so:
-const Image = () => (
-	<img src={imgSrc} alt="⚡"/>
-);
+const Image = () => <img src={imgSrc} alt="⚡" />;
 ```
 
 Check out the [`Image` component](src/components/image.js) for a live example.
 
 ## TODO
 
-- [x] PWA
-- [x] Testing
-- [ ] module & nomodule support
+-   [x] PWA
+-   [x] Testing
+-   [ ] module & nomodule support
 
 ## Related
 
-- [static-webpack-boilerplate](https://github.com/xxczaki/static-webpack-boilerplate)
+-   [static-webpack-boilerplate](https://github.com/xxczaki/static-webpack-boilerplate)
 
 ### License
 
