@@ -9,12 +9,13 @@ import thunk from 'redux-thunk';
 import createRootReducer from './reducers/reducer';
 import routes from './routes/routes';
 
-const history = createBrowserHistory();
+export const history = createBrowserHistory();
 
 const middleware = [thunk, routerMiddleware(history)];
 
 const store = createStore(createRootReducer(history), composeWithDevTools(applyMiddleware(...middleware)));
 
+//store.replaceReducer(createRootReducer(history));
 /*
     APP ENTRY POINT:
     -configure the redux store with redux devtool extension compatibility and thunk middleware
