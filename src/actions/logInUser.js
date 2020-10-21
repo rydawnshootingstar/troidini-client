@@ -14,7 +14,7 @@ export const logInUser = (email, password) => async (dispatch) => {
 			payload: user,
 		});
 
-		dispatch(push('/signup'));
+		dispatch(push('/projects'));
 	} catch (err) {
 		dispatch({
 			type: LOGIN_USER_FAILURE,
