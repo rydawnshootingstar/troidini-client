@@ -1,18 +1,22 @@
-import { REGISTER_USER_START, REGISTER_USER_SUCCESS, REGISTER_USER_FAILURE } from './actionTypes';
+import { REGISTER_USER_START, REGISTER_USER_SUCCESS, REGISTER_USER_FAILURE, LOGIN_USER_START } from './actionTypes';
 import { register } from '../api/register';
 import { push } from 'connected-react-router';
+import { logInUser } from './logInUser';
 
-export const registerUser = (email, password) => async (dispatch) => {
+export const registerUser = (userData) => async (dispatch) => {
 	dispatch({
 		type: REGISTER_USER_START,
 	});
 
 	try {
-		const user = await register(email, password);
+		if (userData.organizationId) {
+		}
+		const user = await register({ ...userData });
 		dispatch({
 			type: REGISTER_USER_SUCCESS,
-			payload: user,
 		});
+
+		dispatch(logInUser(user.email, user.password));
 	} catch (err) {
 		dispatch({
 			type: REGISTER_USER_FAILURE,

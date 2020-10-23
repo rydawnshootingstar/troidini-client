@@ -14,9 +14,10 @@ class ContentBox extends Component {
 }
 
 const Content = styled.div`
+	background-color: '#FFF';
 	border: 2px solid black;
 	border-radius: 13px;
-	min-width: 700px;
+	width: 700px;
 	/*max-width: 1100px; */
 	margin: 0px auto;
 	margin-bottom: 50px;

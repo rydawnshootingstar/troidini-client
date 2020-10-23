@@ -1,5 +1,5 @@
 import { CREATE_ORGANIZATION_START, CREATE_ORGANIZATION_SUCCESS, CREATE_ORGANIZATION_FAILURE } from './actionTypes';
-import { createOrganization } from '../api/createOrganization';
+import { createOrganization as createOrganizationApi } from '../api/createOrganization';
 import { push } from 'connected-react-router';
 
 export const createOrganization = (organizationData) => async (dispatch) => {
@@ -8,12 +8,13 @@ export const createOrganization = (organizationData) => async (dispatch) => {
 	});
 
 	try {
-		const newOrganization = await createOrganization({ ...organizationData });
+		const newOrganization = await createOrganizationApi({ ...organizationData });
 
 		dispatch({
 			type: CREATE_ORGANIZATION_SUCCESS,
-			payload: newOrganization,
+			payload: { organization_id: newOrganization.id },
 		});
+		dispatch(push('/register'));
 	} catch (err) {
 		dispatch({
 			type: CREATE_ORGANIZATION_FAILURE,

@@ -3,7 +3,7 @@ import axios from 'axios';
 export const createOrganization = (organizationData) => {
 	return new Promise(async (resolve, reject) => {
 		try {
-			const organization = await axios.post(
+			const res = await axios.post(
 				'http://localhost:5555/organizations/create',
 				{ ...organizationData },
 				{
@@ -14,8 +14,8 @@ export const createOrganization = (organizationData) => {
 				}
 			);
 
-			if (organization) {
-				resolve(organization);
+			if (res.data) {
+				resolve(res.data);
 			}
 		} catch (err) {
 			reject('Could not create that organization');

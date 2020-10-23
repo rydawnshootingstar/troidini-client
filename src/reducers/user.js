@@ -1,6 +1,6 @@
 import * as R from 'ramda';
 
-import { LOGIN_USER_SUCCESS } from '../actions/actionTypes';
+import { LOGIN_USER_SUCCESS, REGISTER_USER_SUCCESS } from '../actions/actionTypes';
 
 export default (state = {}, { type, payload }) => {
 	switch (type) {

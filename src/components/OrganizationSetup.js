@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { registerUser } from '../actions/registerUser';
+import { createOrganization } from '../actions/createOrganization';
 import styled from 'styled-components';
+
+import { SliderPicker } from 'react-color';
 
 import ContentBox from './UI/ContentBox';
 import FormField from './UI/FormField';
@@ -28,9 +30,37 @@ class OrganizationSetup extends Component {
 		});
 	};
 
+	onChangeCompletePrimary = (color, event) => {
+		this.setState({
+			theme_primary: color.hex,
+		});
+	};
+
+	onChangeCompleteSecondary = (color, event) => {
+		this.setState({
+			theme_secondary: color.hex,
+		});
+	};
+
+	onChangeCompleteTertiary = (color, event) => {
+		this.setState({
+			theme_tertiary: color.hex,
+		});
+	};
+
+	onColorChange = (color) => {
+		this.setState({
+			activeColor: color.hex,
+		});
+	};
+
 	render() {
 		return (
-			<Container>
+			<Container
+				primary={this.state.theme_primary}
+				secondary={this.state.theme_secondary}
+				tertiary={this.state.theme_tertiary}
+			>
 				<PageTitle>Organization Setup</PageTitle>
 				<PageSubtitle>
 					Troidini keeps your all of your projects organized in a dashboard so you can keep issues separate
@@ -53,7 +83,49 @@ class OrganizationSetup extends Component {
 				<ContentBox title={'Optional'} subtitle={'You can set these up later'}>
 					{/* TODO: image uploads (set up bucket for this) */}
 					{/* TODO: colorpicker for primary secondary tertiary */}
+					<h2>Custom Theme</h2>
+					<h4>Primary Color</h4>
+					<SliderPicker color={'#FFF'} onChangeComplete={this.onChangeCompletePrimary} />
+					<Input
+						short
+						type="text"
+						name="theme_primary"
+						value={this.state.theme_primary}
+						onChange={this.handleChange}
+						placeholder="#xxxxxx"
+					></Input>
+
+					<h4>Secondary Color</h4>
+					<SliderPicker color={'#FFF'} onChangeComplete={this.onChangeCompleteSecondary} />
+					<Input
+						short
+						type="text"
+						name="theme_secondary"
+						value={this.state.theme_secondary}
+						onChange={this.handleChange}
+						placeholder="#xxxxxx"
+					></Input>
+					<h4>Tertiary Color</h4>
+					<SliderPicker color={'#FFF'} onChangeComplete={this.onChangeCompleteTertiary} />
+					<Input
+						short
+						type="text"
+						name="theme_tertiary"
+						value={this.state.theme_tertiary}
+						onChange={this.handleChange}
+						placeholder="#xxxxxx"
+					></Input>
 				</ContentBox>
+
+				<Button
+					primary={this.state.theme_primary}
+					secondary={this.state.theme_secondary}
+					tertiary={this.state.theme_tertiary}
+					onClick={() => this.props.createOrganization({ ...this.state })}
+				>
+					Continue
+				</Button>
+				<ErrorMessage>{this.props.organizationError || ''}</ErrorMessage>
 			</Container>
 		);
 	}
@@ -66,6 +138,7 @@ const Container = styled.div`
 	align-items: center;
 	min-height: 100vh;
 	width: 100%;
+	background-color: ${(props) => (props.primary ? props.primary : '#FFF')};
 `;
 
 const PageTitle = styled.h1`
@@ -80,17 +153,38 @@ const PageSubtitle = styled.p`
 `;
 
 const Input = styled.input`
-	width: 400px;
+	width: ${(props) => (props.short ? '100px' : '400px')};
 	height: 30px;
+`;
+
+const Button = styled.button`
+	display: flex;
+	background-color: ${(props) => (props.secondary ? props.secondary : '#FFF')};
+	color: ${(props) => (props.tertiary ? props.tertiary : '#000')};
+	justify-content: center;
+	align-items: center;
+	width: 160px;
+	height: 60px;
+	border-radius: 15px;
+	font-size: 25px;
+	cursor: pointer;
+	&:hover {
+		/* background-color: ${colors.teal}; */
+	}
+`;
+
+const ErrorMessage = styled.h2`
+	color: red;
 `;
 
 const mapStateToProps = (state) => ({
 	email: state.partialUser.email,
 	password: state.partialUser.password,
+	organizationError: state.error.create_organization,
 });
 
 const mapDispatchToProps = {
-	registerUser,
+	createOrganization,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(OrganizationSetup);
