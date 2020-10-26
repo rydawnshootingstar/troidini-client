@@ -5,6 +5,7 @@ import {
 	BEGIN_REGISTRATION_FAILURE,
 	CREATE_ORGANIZATION_FAILURE,
 	REGISTER_USER_FAILURE,
+	LOOKUP_ORGANIZATION_CODE_FAILURE,
 } from '../actions/actionTypes';
 
 export default (
@@ -20,6 +21,8 @@ export default (
 			return R.mergeRight(state, { create_organization: payload });
 		case REGISTER_USER_FAILURE:
 			return R.mergeRight(state, { register_user: payload });
+		case LOOKUP_ORGANIZATION_CODE_FAILURE:
+			return R.mergeRight(state, { lookup_organization: payload });
 		default:
 			return state;
 	}

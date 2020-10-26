@@ -4,7 +4,7 @@ export const getOrganizationByCode = (organization_code) => {
 	return new Promise(async (resolve, reject) => {
 		try {
 			const res = await axios.post(
-				'http://localhost:5555/organizations/verify',
+				'http://localhost:5555/organizations/verify/invite',
 				{ organization_code },
 				{
 					headers: {

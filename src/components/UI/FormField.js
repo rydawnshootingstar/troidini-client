@@ -10,9 +10,11 @@ const FormField = (props) => (
 
 const Label = styled.p`
 	margin-right: 10px;
+	width: 20%;
 `;
 
 const Field = styled.div`
+	flex-wrap: wrap;
 	display: flex;
 	align-items: center;
 	width: 100%;
