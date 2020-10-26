@@ -6,6 +6,7 @@ import styled from 'styled-components';
 
 import ContentBox from './UI/ContentBox';
 import FormField from './UI/FormField';
+import OptionForm from './UI/OptionForm';
 
 class Register extends Component {
 	state = {
@@ -54,6 +55,31 @@ class Register extends Component {
 		</VerifyStatus>
 	);
 
+	renderOptions = () => {
+		return (
+			<OptionForm
+				title={'User Type'}
+				stateVariable={'type'}
+				stateValue={this.state.type}
+				handleChange={this.handleChange}
+				options={[
+					{
+						name: 'Developer',
+						description:
+							'Developers resolve issues and track their status, keeping bugs associated with the correct repos',
+						value: 'Developer',
+					},
+					{
+						name: 'Support',
+						description:
+							'Support users help the dev team by adding information to issues and communicating intended behavior',
+						value: 'Support',
+					},
+				]}
+			/>
+		);
+	};
+
 	fieldsFilledOut = () => {
 		const { email, password, username, organization_id, type } = this.state;
 		const filledOut = email && password && username && organization_id && type;
@@ -85,7 +111,14 @@ class Register extends Component {
 		}
 
 		if (this.fieldsFilledOut()) {
-			this.props.registerUser({ email, username, password, type, avatar_url, organization_id });
+			this.props.registerUser({
+				email,
+				username,
+				password,
+				type,
+				avatar_url,
+				organization_id: this.state.organization_id,
+			});
 		} else {
 			this.setState({
 				formError: 'All required fields must be filled out to continue',
@@ -128,39 +161,7 @@ class Register extends Component {
 									></Input>
 									{this.renderVerifyStatus()}
 								</FormField>
-								<h3>User Type</h3>
-								<OptionPicker>
-									<Option>
-										<OptionIcon />
-										<OptionName>Developer</OptionName>
-										<OptionDescription>
-											Developers resolve issues and track their status, keeping bugs associated
-											with the correct repos
-										</OptionDescription>
-										<OptionRadio
-											type="radio"
-											name="type"
-											value="Developer"
-											checked={this.state.type === 'Developer'}
-											onChange={this.handleChange}
-										/>
-									</Option>
-									<Option>
-										<OptionIcon />
-										<OptionName>Support</OptionName>
-										<OptionDescription>
-											Support users help the dev team by adding information to issues and
-											communicating intended behavior
-										</OptionDescription>
-										<OptionRadio
-											type="radio"
-											name="type"
-											value="Support"
-											checked={this.state.type === 'Support'}
-											onChange={this.handleChange}
-										/>
-									</Option>
-								</OptionPicker>
+								{this.renderOptions()}
 							</React.Fragment>
 						)}
 					</FormField>
@@ -224,45 +225,6 @@ const Button = styled.button`
 
 const ErrorMessage = styled.h2`
 	color: red;
-`;
-const OptionPicker = styled.div`
-	display: flex;
-	width: 100%;
-	align-items: baseline;
-	justify-content: space-around;
-`;
-
-const Option = styled.div`
-	width: 150px;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-`;
-
-const OptionIcon = styled.div`
-	width: 150px;
-	height: 150px;
-	border: 2px solid black;
-`;
-
-const OptionRadio = styled.input`
-	height: 25px;
-	width: 25px;
-	background-color: #eee;
-	border-radius: 50%;
-`;
-
-const OptionName = styled.p`
-	font-size: 20px;
-	font-weight: 600;
-	margin-top: 5px;
-	margin-bottom: 0px;
-`;
-
-const OptionDescription = styled.p`
-	font-size: 13px;
-	opacity: 70%;
 `;
 
 const VerifyStatus = styled.span`
