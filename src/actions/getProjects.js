@@ -2,13 +2,13 @@ import { GET_PROJECTS_START, GET_PROJECTS_SUCCESS, GET_PROJECTS_FAILURE } from '
 import { getProjects as getProjectsApi } from '../api/getProjects';
 import { push } from 'connected-react-router';
 
-export const getProjects = (organizationId) => async (dispatch) => {
+export const getProjects = () => async (dispatch) => {
 	dispatch({
 		type: GET_PROJECTS_START,
 	});
 
 	try {
-		const projects = await getProjectsApi({ organizationId });
+		const projects = await getProjectsApi();
 
 		dispatch({
 			type: GET_PROJECTS_SUCCESS,

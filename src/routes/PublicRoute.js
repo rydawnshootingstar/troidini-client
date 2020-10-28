@@ -11,7 +11,7 @@ export const PublicRoute = ({user, component: Component, ...rest})=> (
 
 
 const mapStateToProps = (state)=>({
-    user: state.user   
+    user: state.user.id 
 })
 
 export default connect(mapStateToProps)(PublicRoute);

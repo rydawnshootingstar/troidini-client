@@ -6,11 +6,11 @@ import PreSignup from '../components/PreSignup';
 import Register from '../components/Register';
 import Projects from '../components/Projects';
 import PrivateRoute from './PrivateRoute';
-import { PublicRoute } from '../../../../../stage/expenses/src/routers/PublicRoute';
+import PublicRoute from './PublicRoute';
 
 export default (
 	<Switch>
-		<PublicRoute path="/" component={Login} exact />
+		<Route path="/" component={Login} exact />
 		<Route path="/setup" component={PreSignup} exact />
 		<Route path="/register" component={Register} exact />
 		<Route path="/organization-setup" component={OrganizationSetup} exact />
