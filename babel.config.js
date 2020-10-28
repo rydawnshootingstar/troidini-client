@@ -25,6 +25,7 @@ module.exports = (api) => {
 			},
 		],
 		'@babel/plugin-proposal-class-properties',
+		'@babel/plugin-proposal-object-rest-spread',
 	];
 
 	if (!api.env('production') && !api.env('test')) {
