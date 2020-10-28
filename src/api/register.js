@@ -7,6 +7,7 @@ export const register = (userData) => {
 				'http://localhost:5555/users/create',
 				{ ...userData },
 				{
+					withCredentials: true,
 					headers: {
 						// Overwrite Axios's automatically set Content-Type
 						'Content-Type': 'application/json',

@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { logInUser } from '../actions/logInUser';
 import { beginRegistration } from '../actions/beginRegistration';
+import { resumeSession } from '../actions/resumeSession';
 import styled from 'styled-components';
-
+import axios from 'axios';
 import logoimg from '../../public/WORKING-logo.png';
 
 class Login extends Component {
@@ -11,6 +12,10 @@ class Login extends Component {
 		email: '',
 		password: '',
 	};
+
+	componentDidMount() {
+		this.props.resumeSession();
+	}
 
 	handleChange = (e) => {
 		this.setState({
@@ -114,6 +119,7 @@ const mapStateToProps = ({ error }) => ({
 const mapDispatchToProps = {
 	logInUser,
 	beginRegistration,
+	resumeSession,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);

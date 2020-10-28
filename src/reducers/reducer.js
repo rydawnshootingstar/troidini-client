@@ -3,6 +3,7 @@ import { connectRouter } from 'connected-react-router';
 import user from './user';
 import error from './error';
 import partialUser from './partialUser';
+import projects from './projects';
 
 const createRootReducer = (history) => {
 	return combineReducers({
@@ -10,6 +11,7 @@ const createRootReducer = (history) => {
 		partialUser,
 		user,
 		error,
+		projects,
 	});
 };
 

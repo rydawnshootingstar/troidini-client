@@ -1,13 +1,12 @@
 import axios from 'axios';
 
-export const createOrganization = (organizationData) => {
+export const getProjects = (organizationId) => {
 	return new Promise(async (resolve, reject) => {
 		try {
 			const res = await axios.post(
-				'http://localhost:5555/organizations/create',
-				{ ...organizationData },
+				'http://localhost:5555/projects/verify/invite',
+				{ organization_id: organizationId },
 				{
-					withCredentials: true,
 					headers: {
 						// Overwrite Axios's automatically set Content-Type
 						'Content-Type': 'application/json',
@@ -15,11 +14,11 @@ export const createOrganization = (organizationData) => {
 				}
 			);
 
-			if (res.data) {
-				resolve(res.data);
+			if (res.data.organization_id) {
+				resolve(res.data.organization_id);
 			}
 		} catch (err) {
-			reject('Could not create that organization');
+			reject('No organization found with this code.');
 		}
 	});
 };

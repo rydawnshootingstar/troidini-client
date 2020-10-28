@@ -7,6 +7,7 @@ export const login = (email, password) => {
 				'http://localhost:5555/login',
 				{ email, password },
 				{
+					withCredentials: true,
 					headers: {
 						// Overwrite Axios's automatically set Content-Type
 						'Content-Type': 'application/json',

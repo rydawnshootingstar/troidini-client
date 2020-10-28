@@ -133,7 +133,7 @@ class Register extends Component {
 				<PageSubtitle>
 					{this.props.organizationId
 						? 'Your organization is now ready to go! Complete your user information to start using Troidini'
-						: "To join an existing organization, you'll need an invite code. Ask an Administrator for this code and paste it below. To create an additional Administrator account, you'll also need the Admin Code."}
+						: "To join an existing organization, you'll need an invite code. Ask an Administrator for this code and paste it below."}
 				</PageSubtitle>
 				<ContentBox title={'Required'}>
 					<FormField label={'Username'}>
