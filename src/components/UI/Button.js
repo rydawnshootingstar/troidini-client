@@ -11,7 +11,7 @@ const CustomButton = styled.button`
 	color: ${(props) => (props.tertiary ? props.tertiary : '#000')};
 	justify-content: center;
 	align-items: center;
-	width:${(props) => (props.small ? '90px' : '160px')}; 
+	min-width:${(props) => (props.small ? '90px' : '160px')}; 
 	height: ${(props) => (props.small ? '40px' : '60px')}; ;
 	border-radius: 15px;
 	font-size: ${(props) => (props.small ? '15px' : '25px')}; ;

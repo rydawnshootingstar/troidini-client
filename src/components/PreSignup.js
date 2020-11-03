@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import RouteLink from '../components/UI/RouteLink';
 
 class PreSignup extends Component {
 	render() {
@@ -13,12 +13,12 @@ class PreSignup extends Component {
 					you’ll be able to add projects and begin tracking your issues!
 				</h2>
 				<ButtonContainer>
-					<Link to={'/organization-setup'}>
+					<RouteLink to={'/organization-setup'}>
 						<Button>Begin Setup</Button>
-					</Link>
-					<Link to={'/register'}>
+					</RouteLink>
+					<RouteLink to={'/register'}>
 						<Button>Join Existing</Button>
-					</Link>
+					</RouteLink>
 				</ButtonContainer>
 			</Container>
 		);

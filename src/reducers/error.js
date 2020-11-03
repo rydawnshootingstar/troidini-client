@@ -8,10 +8,22 @@ import {
 	LOOKUP_ORGANIZATION_CODE_FAILURE,
 	GET_PROJECTS_FAILURE,
 	RESUME_SESSION_FAILURE,
+	CREATE_PROJECT_FAILURE,
+	CREATE_DOMAIN_FAILURE,
 } from '../actions/actionTypes';
 
 export default (
-	state = { login: null, begin_registration: null, create_organization: null, register_user: null },
+	state = {
+		login: null,
+		begin_registration: null,
+		create_organization: null,
+		register_user: null,
+		lookup_organization: null,
+		resume_session: null,
+		get_projects: null,
+		create_project: null,
+		create_domain: null,
+	},
 	{ type, payload }
 ) => {
 	switch (type) {
@@ -29,6 +41,10 @@ export default (
 			return R.mergeRight(state, { resume_session: payload });
 		case GET_PROJECTS_FAILURE:
 			return R.mergeRight(state, { get_projects: payload });
+		case CREATE_PROJECT_FAILURE:
+			return R.mergeRight(state, { create_project: payload });
+		case CREATE_DOMAIN_FAILURE:
+			return R.mergeRight(state, { create_domain: payload });
 		default:
 			return state;
 	}

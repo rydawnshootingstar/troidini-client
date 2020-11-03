@@ -11,8 +11,12 @@ export const resume = () => {
 				},
 			});
 
-			if (res.data) {
-				resolve({ ...res.data });
+			if (res.status === 401) {
+				reject('Invalid Session');
+			} else {
+				if (res.data) {
+					resolve({ ...res.data });
+				}
 			}
 		} catch (err) {
 			reject('Invalid session.');
