@@ -1,8 +1,9 @@
 import * as R from 'ramda';
 
-import { GET_PROJECTS_SUCCESS } from '../actions/actionTypes';
+import { GET_PROJECTS_SUCCESS, LOGOUT_USER_SUCCESS } from '../actions/actionTypes';
 
-export default (state = [], { type, payload }) => {
+const defaultState = [];
+export default (state = defaultState, { type, payload }) => {
 	switch (type) {
 		case GET_PROJECTS_SUCCESS:
 			const currentState = state;
@@ -11,6 +12,8 @@ export default (state = [], { type, payload }) => {
 			});
 			const newState = R.uniq(currentState);
 			return newState;
+		case LOGOUT_USER_SUCCESS:
+			return defaultState;
 		default:
 			return state;
 	}

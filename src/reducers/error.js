@@ -10,22 +10,22 @@ import {
 	RESUME_SESSION_FAILURE,
 	CREATE_PROJECT_FAILURE,
 	CREATE_DOMAIN_FAILURE,
+	LOGOUT_USER_SUCCESS,
 } from '../actions/actionTypes';
 
-export default (
-	state = {
-		login: null,
-		begin_registration: null,
-		create_organization: null,
-		register_user: null,
-		lookup_organization: null,
-		resume_session: null,
-		get_projects: null,
-		create_project: null,
-		create_domain: null,
-	},
-	{ type, payload }
-) => {
+const defaultState = {
+	login: null,
+	begin_registration: null,
+	create_organization: null,
+	register_user: null,
+	lookup_organization: null,
+	resume_session: null,
+	get_projects: null,
+	create_project: null,
+	create_domain: null,
+};
+
+export default (state = defaultState, { type, payload }) => {
 	switch (type) {
 		case LOGIN_USER_FAILURE:
 			return R.mergeRight(state, { login: payload });
@@ -45,6 +45,8 @@ export default (
 			return R.mergeRight(state, { create_project: payload });
 		case CREATE_DOMAIN_FAILURE:
 			return R.mergeRight(state, { create_domain: payload });
+		case LOGOUT_USER_SUCCESS:
+			return defaultState;
 		default:
 			return state;
 	}

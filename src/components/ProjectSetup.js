@@ -62,6 +62,7 @@ class ProjectSetup extends Component {
 		}
 
 		if (name) {
+			console.log('domains:', domainData);
 			this.props.createProject({ name, domains: domainData });
 		} else {
 			this.setState({

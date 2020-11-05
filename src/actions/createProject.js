@@ -15,10 +15,11 @@ export const createProject = ({ name, domains }) => async (dispatch) => {
 		});
 
 		if (domains) {
-			console.log('we processin domains');
 			domains.forEach((domain) => {
-				domain.project_id = project.id;
-				dispatch(createDomain(domain));
+				if (domain != null) {
+					domain.project_id = project.id;
+					dispatch(createDomain(domain));
+				}
 			});
 		}
 

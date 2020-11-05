@@ -4,6 +4,7 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 import RouteLink from '../components/UI/RouteLink';
 import { getProjects } from '../actions/getProjects';
+import { logOutUser } from '../actions/logOutUser';
 import * as R from 'ramda';
 
 class Projects extends Component {
@@ -18,10 +19,15 @@ class Projects extends Component {
 		</div>
 	);
 
+	logOut = () => {
+		this.props.logOutUser();
+	};
+
 	render() {
 		return (
 			<Container>
 				<h1>Projects</h1>
+				<button onClick={this.logOut}>Log out</button>
 				<ProjectsContainer>
 					{this.props.projects.map((project) => {
 						return this.renderProject(project);
@@ -44,6 +50,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = {
 	getProjects,
+	logOutUser,
 };
 
 const ProjectsContainer = styled.div`
