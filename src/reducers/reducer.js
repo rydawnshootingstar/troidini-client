@@ -6,6 +6,7 @@ import partialUser from './partialUser';
 import projects from './projects';
 import currentProject from './currentProject';
 import initiatives from './initiatives';
+import domains from './domains';
 
 const createRootReducer = (history) => {
 	return combineReducers({
@@ -16,6 +17,7 @@ const createRootReducer = (history) => {
 		projects,
 		currentProject,
 		initiatives,
+		domains,
 	});
 };
 

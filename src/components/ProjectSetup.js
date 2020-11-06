@@ -41,7 +41,6 @@ class ProjectSetup extends Component {
 		const newDomain = '';
 		domains.push(newDomain);
 		this.setState({ domains });
-		console.log(this.state);
 	};
 
 	handleContinue = async () => {
@@ -62,7 +61,6 @@ class ProjectSetup extends Component {
 		}
 
 		if (name) {
-			console.log('domains:', domainData);
 			this.props.createProject({ name, domains: domainData });
 		} else {
 			this.setState({
