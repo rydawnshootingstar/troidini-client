@@ -15,7 +15,9 @@ class Projects extends Component {
 	renderProject = (project) => (
 		<div key={project.id}>
 			<ProjectPicture />
-			<h1>{project.name}</h1>
+			<RouteLink to={`/project/${project.name}`}>
+				<h1>{project.name}</h1>
+			</RouteLink>
 		</div>
 	);
 

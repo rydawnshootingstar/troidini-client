@@ -7,6 +7,7 @@ import Register from '../components/Register';
 import Projects from '../components/Projects';
 import ProjectSetup from '../components/ProjectSetup';
 import PrivateRoute from './PrivateRoute';
+import Project from '../components/Project';
 import PublicRoute from './PublicRoute';
 
 export default (
@@ -17,5 +18,6 @@ export default (
 		<Route path="/organization-setup" component={OrganizationSetup} exact />
 		<PrivateRoute path="/project-setup" component={ProjectSetup} exact />
 		<PrivateRoute path="/projects" component={Projects} />
+		<PrivateRoute path="/project/:name" component={Project} />
 	</Switch>
 );

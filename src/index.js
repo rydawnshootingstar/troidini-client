@@ -8,6 +8,10 @@ import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import createRootReducer from './reducers/reducer';
 import routes from './routes/routes';
+// Import assets
+import 'modern-normalize/modern-normalize.css';
+import woff2 from '../public/fonts/open-sans-v16-latin-regular.woff2';
+import woff from '../public/fonts/open-sans-v16-latin-regular.woff';
 
 export const history = createBrowserHistory();
 

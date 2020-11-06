@@ -4,7 +4,6 @@ import { logInUser } from '../actions/logInUser';
 import { beginRegistration } from '../actions/beginRegistration';
 import { resumeSession } from '../actions/resumeSession';
 import styled from 'styled-components';
-import axios from 'axios';
 import logoimg from '../../public/WORKING-logo.png';
 
 class Login extends Component {
@@ -71,6 +70,7 @@ const Container = styled.div`
 	justify-content: center;
 	align-items: center;
 	min-height: 100vh;
+	width: 100%;
 `;
 
 const Input = styled.input`
