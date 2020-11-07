@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { setCurrentProject } from '../actions/setCurrentProject';
 import { getInitiatives } from '../actions/getInitiatives';
 import { getDomains } from '../actions/getDomains';
+import { getOnlineNow } from '../actions/getOnlineNow';
 
 class Project extends Component {
 	state = {
@@ -20,7 +21,7 @@ class Project extends Component {
 
 		this.props.getInitiatives(targetProject.id);
 		this.props.getDomains(targetProject.id);
-		// this.props.getOnlineNow(this.props.organizationId);
+		this.props.getOnlineNow();
 		// TODO: get initiatives and save to state
 		// TODO: get domains and save to state
 		// TODO: get online ppl and save to state
@@ -41,6 +42,14 @@ class Project extends Component {
 		);
 	};
 
+	renderUser = (user) => {
+		return (
+			<div key={user.id}>
+				<h1>User: {user.username}</h1>
+			</div>
+		);
+	};
+
 	render() {
 		return (
 			<div>
@@ -54,7 +63,9 @@ class Project extends Component {
 					{' '}
 					{this.props.domains ? this.props.domains.map((domain) => this.renderDomain(domain)) : 'no domains'}
 				</div>
-				<div>{this.props.onlineNow ? this.renderSocialBar() : 'nobody online'}</div>
+				<div>
+					{this.props.onlineNow ? this.props.onlineNow.map((user) => this.renderUser(user)) : 'nobody online'}
+				</div>
 			</div>
 		);
 	}
@@ -66,12 +77,14 @@ const mapStateToProps = (state) => ({
 	organizationId: state.user.organization_id,
 	initiatives: state.initiatives,
 	domains: state.domains,
+	onlineNow: state.onlineUsers,
 });
 
 const mapDispatchToProps = {
 	setCurrentProject,
 	getInitiatives,
 	getDomains,
+	getOnlineNow,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Project);

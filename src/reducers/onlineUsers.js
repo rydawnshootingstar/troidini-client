@@ -1,19 +1,17 @@
 import * as R from 'ramda';
 
-import { GET_PROJECTS_SUCCESS, LOGOUT_USER_SUCCESS } from '../actions/actionTypes';
+import { GET_ONLINE_USERS_SUCCESS } from '../actions/actionTypes';
 
 const defaultState = [];
 export default (state = defaultState, { type, payload }) => {
 	switch (type) {
-		case GET_PROJECTS_SUCCESS:
+		case GET_ONLINE_USERS_SUCCESS:
 			const currentState = [];
-			payload.forEach((project) => {
-				currentState.push(project);
+			payload.forEach((user) => {
+				currentState.push(user);
 			});
 			const newState = R.uniq(currentState);
 			return newState;
-		case LOGOUT_USER_SUCCESS:
-			return defaultState;
 		default:
 			return state;
 	}

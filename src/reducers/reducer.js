@@ -7,6 +7,7 @@ import projects from './projects';
 import currentProject from './currentProject';
 import initiatives from './initiatives';
 import domains from './domains';
+import onlineUsers from './onlineUsers';
 
 const createRootReducer = (history) => {
 	return combineReducers({
@@ -18,6 +19,7 @@ const createRootReducer = (history) => {
 		currentProject,
 		initiatives,
 		domains,
+		onlineUsers,
 	});
 };
 
